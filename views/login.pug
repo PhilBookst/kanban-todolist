@@ -1,0 +1,15 @@
+extends accounts
+
+mixin inputs(name)
+  label(for=name) #{name.charAt(0).toUpperCase() + name.slice(1)}
+  input(name=name placeholder=name.charAt(0).toUpperCase() + name.slice(1) id=name type!=attributes.type)
+
+
+block login
+  +inputs('username')(type='text' autocomplete="username")
+  if username
+    .error= username
+  +inputs('password')(type='password' autocomplete="current-password")
+  if password
+    .error= password
+  input(name='submit' type='submit' id='loginSubmit' value='Login') 

@@ -1,0 +1,18 @@
+extends index
+
+append head
+    script(src='javascripts/codemirror.js')
+    link(rel='stylesheet' href='stylesheets/codemirror.css')
+    script(src='javascripts/javascript.js')
+    link(rel='stylesheet' href='stylesheets/dracula.css')
+    link(rel='stylesheet' href='stylesheets/fullscreen.css')
+    script(src='javascripts/fullscreen.js')
+    script(src='javascripts/closebrackets.js')
+    script(src='javascripts/matchbrackets.js')
+
+block todoRoute
+  form(id="todoForm" name="todoForm" method="POST" target="hidden-frame")
+    textarea(id="editor" form="todoForm")=data
+    input(type="hidden" id="todoSubmit" name="todoSubmit")
+  iframe(style="display:none", name="hidden-frame")
+  script(src='javascripts/editor.js')

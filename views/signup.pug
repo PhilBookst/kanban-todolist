@@ -1,0 +1,18 @@
+extends accounts
+
+mixin inputs(name)
+  label(for=name) #{name.charAt(0).toUpperCase() + name.slice(1)}
+  input(name=name placeholder=name.charAt(0).toUpperCase() + name.slice(1) id=name type!=attributes.type)
+  if errors
+    for error in errors
+      if error.param === name
+        .error= error.msg
+block signup
+  +inputs('username')(type='text')
+  +inputs('password')(type='password')
+  +inputs('confirm')(type='password')
+  if err
+    .error= err
+  input(name='submit' type='submit' id='signUpSubmit' value='Create Account') 
+
+

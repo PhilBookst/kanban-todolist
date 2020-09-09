@@ -1,0 +1,23 @@
+extends kanbanRoute
+
+mixin kanban(due, index)
+  div(class="col kanbanLayout" id=index draggable="true" ondragstart="dragstart_handler(event)")
+    .innerKanban
+      .kanbanTitle.editable(contenteditable='true' id= due)= due
+        i.far.fa-times-circle(onhover="opacity()" onclick="deleteKanban(event)")
+      .kanbanContent
+        for task in tasks
+          if task.due === due
+            if task.task === "Placeholder"
+              - continue
+            div(class="kanban" id=task.task draggable="true" ondragstart="dragstart_handler(event)")
+              span.editable(contenteditable='true')= task.task
+              
+
+
+block kanbanLayout
+  for due, index in dates
+    +kanban(due, index)
+  .col-1.newKanban
+      #plus +
+

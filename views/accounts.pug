@@ -1,0 +1,14 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel="stylesheet", href="stylesheets/accounts.css")
+  title Todo - Kanban
+
+block account
+  .options
+    a(href="/login") Login
+    a(href="/sign-up") Sign Up
+  form(action='' class='box' method='POST')
+    block signup
+    block login
